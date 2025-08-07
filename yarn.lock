@@ -1459,8 +1459,8 @@ __metadata:
   linkType: hard
 
 "@nestjs/common@npm:^11.0.1":
-  version: 11.1.5
-  resolution: "@nestjs/common@npm:11.1.5"
+  version: 11.1.6
+  resolution: "@nestjs/common@npm:11.1.6"
   dependencies:
     file-type: 21.0.0
     iterare: 1.2.1
@@ -1477,7 +1477,7 @@ __metadata:
       optional: true
     class-validator:
       optional: true
-  checksum: 20dbf3a5b1b01f71645c1a5c15ef0584b99cf45eb90ce4abdee780a2f1f480a119b3e0b08bc4623b9439328b112b5c5684d063550003bf2b6c3d0853f853aa1e
+  checksum: b615786df5ab33728757cb3ff5a932a5168d1a0ebd5c91fd13cf98db66d516cb10591a8d6a72e5cf7b7d8d2eeb04553522acbcb4fca10e441c7665cde949d004
   languageName: node
   linkType: hard
 
@@ -1496,8 +1496,8 @@ __metadata:
   linkType: hard
 
 "@nestjs/core@npm:^11.0.1":
-  version: 11.1.5
-  resolution: "@nestjs/core@npm:11.1.5"
+  version: 11.1.6
+  resolution: "@nestjs/core@npm:11.1.6"
   dependencies:
     "@nuxt/opencollective": 0.4.1
     fast-safe-stringify: 2.1.1
@@ -1519,7 +1519,7 @@ __metadata:
       optional: true
     "@nestjs/websockets":
       optional: true
-  checksum: be23c7cd27b1d1e30def92ebb8e0e4279bba207c8f6910500828a9c6ec20f4b32ca7051007de2b8f30814619fb06175379ae0e1f1ee89ab6d92a4caf13bb36f2
+  checksum: cff49f030634103e0d63037fe5c28496584f41a96fa84ad42ef88b091705f37db8054caf862f1bce6163d029eb4a7c591971e2f50ca2664501bd26141a8e6b39
   languageName: node
   linkType: hard
 
@@ -1546,8 +1546,8 @@ __metadata:
   linkType: hard
 
 "@nestjs/platform-express@npm:^11.0.1":
-  version: 11.1.5
-  resolution: "@nestjs/platform-express@npm:11.1.5"
+  version: 11.1.6
+  resolution: "@nestjs/platform-express@npm:11.1.6"
   dependencies:
     cors: 2.8.5
     express: 5.1.0
@@ -1557,7 +1557,7 @@ __metadata:
   peerDependencies:
     "@nestjs/common": ^11.0.0
     "@nestjs/core": ^11.0.0
-  checksum: de4720511a4a7ac84002b9c778a8698ef80a95c4e925a9edd1f0d46a04dae0c8b0ad3b3c274881ac27aa29da9bde3df789fdb85a5e1d290a1a4c81b6c09ea273
+  checksum: 3077a3dedbb4f57583e523e21e6bdc6276dca8bab2f7620f45374a386f333965f9a7536e874223c9f4d196a99e6bcbcc9a657b1b05522c585e514a24080dbf87
   languageName: node
   linkType: hard
 
@@ -1577,8 +1577,8 @@ __metadata:
   linkType: hard
 
 "@nestjs/testing@npm:^11.0.1":
-  version: 11.1.5
-  resolution: "@nestjs/testing@npm:11.1.5"
+  version: 11.1.6
+  resolution: "@nestjs/testing@npm:11.1.6"
   dependencies:
     tslib: 2.8.1
   peerDependencies:
@@ -1591,7 +1591,7 @@ __metadata:
       optional: true
     "@nestjs/platform-express":
       optional: true
-  checksum: 067c13737b60226f83c50286a38a1badad142321c4d71245f7f67a176da91489ea6144930c1f1b94fb4ae771037acde51fa96fa1ef52cd97a382061abe2c2bdb
+  checksum: 421122bc299687a1f3cce4f2db9eb666d4c4408d3beb9f3857c5ceedbcbda6b2b070c1e26a5514c80bc798a1b50fea81c61fe8b24a61f703ff13d4f9ec8113a4
   languageName: node
   linkType: hard
 
@@ -2103,6 +2103,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/bcrypt@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@types/bcrypt@npm:6.0.0"
+  dependencies:
+    "@types/node": "*"
+  checksum: 628844016504c0d36047ed6c8e97385423c7b6ec6c208569ade8f6f2c685489a5134a38ab61d2ead2c6059983c8804e802d48155d56995805962004ff65c3b6b
+  languageName: node
+  linkType: hard
+
 "@types/body-parser@npm:*":
   version: 1.19.6
   resolution: "@types/body-parser@npm:1.19.6"
@@ -2267,16 +2276,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
-  version: 24.2.0
-  resolution: "@types/node@npm:24.2.0"
-  dependencies:
-    undici-types: ~7.10.0
-  checksum: f5abd0c74312e758711a51ab26858426a2fc6de4576d930759aa645b530db354116049497d0a20ed504ddfc6c3b85dee9253b9bae42be19f1a788c18393123e6
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^22.10.7":
+"@types/node@npm:*, @types/node@npm:^22.17.0":
   version: 22.17.0
   resolution: "@types/node@npm:22.17.0"
   dependencies:
@@ -3185,9 +3185,10 @@ __metadata:
     "@shopify/shopify-api": ^11.14.1
     "@swc/cli": ^0.6.0
     "@swc/core": ^1.10.7
+    "@types/bcrypt": ^6.0.0
     "@types/express": ^5.0.0
     "@types/jest": ^29.5.14
-    "@types/node": ^22.10.7
+    "@types/node": ^22.17.0
     "@types/supertest": ^6.0.2
     bcrypt: ^6.0.0
     bullmq: ^5.56.9
@@ -4081,14 +4082,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:16.4.7":
+"dotenv@npm:16.4.7, dotenv@npm:^16.4.5":
   version: 16.4.7
   resolution: "dotenv@npm:16.4.7"
   checksum: c27419b5875a44addcc56cc69b7dc5b0e6587826ca85d5b355da9303c6fc317fc9989f1f18366a16378c9fdd9532d14117a1abe6029cc719cdbbef6eaef2cea4
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.4.5, dotenv@npm:^16.6.1":
+"dotenv@npm:^16.6.1":
   version: 16.6.1
   resolution: "dotenv@npm:16.6.1"
   checksum: e8bd63c9a37f57934f7938a9cf35de698097fadf980cb6edb61d33b3e424ceccfe4d10f37130b904a973b9038627c2646a3365a904b4406514ea94d7f1816b69
@@ -8099,7 +8100,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-map@npm:0.7.4":
+"source-map@npm:0.7.4, source-map@npm:^0.7.3, source-map@npm:^0.7.4":
   version: 0.7.4
   resolution: "source-map@npm:0.7.4"
   checksum: 01cc5a74b1f0e1d626a58d36ad6898ea820567e87f18dfc9d24a9843a351aaa2ec09b87422589906d6ff1deed29693e176194dc88bcae7c9a852dc74b311dbf5
@@ -8110,13 +8111,6 @@ __metadata:
   version: 0.6.1
   resolution: "source-map@npm:0.6.1"
   checksum: 59ce8640cf3f3124f64ac289012c2b8bd377c238e316fb323ea22fbfe83da07d81e000071d7242cad7a23cd91c7de98e4df8830ec3f133cb6133a5f6e9f67bc2
-  languageName: node
-  linkType: hard
-
-"source-map@npm:^0.7.3, source-map@npm:^0.7.4":
-  version: 0.7.6
-  resolution: "source-map@npm:0.7.6"
-  checksum: 932f4a2390aa7100e91357d88cc272de984ad29139ac09eedfde8cc78d46da35f389065d0c5343c5d71d054a6ebd4939a8c0f2c98d5df64fe97bb8a730596c2d
   languageName: node
   linkType: hard
 
@@ -8857,13 +8851,6 @@ __metadata:
   version: 6.21.0
   resolution: "undici-types@npm:6.21.0"
   checksum: 46331c7d6016bf85b3e8f20c159d62f5ae471aba1eb3dc52fff35a0259d58dcc7d592d4cc4f00c5f9243fa738a11cfa48bd20203040d4a9e6bc25e807fab7ab3
-  languageName: node
-  linkType: hard
-
-"undici-types@npm:~7.10.0":
-  version: 7.10.0
-  resolution: "undici-types@npm:7.10.0"
-  checksum: 6917fcd8c80963919fe918952f9243a6749af0e3f759a39f8d2c2486144a66c86ae4125aebbce700b636cb1dcd45e85eb8c49c60d60738a97b63f0e89ef9b053
   languageName: node
   linkType: hard
 
