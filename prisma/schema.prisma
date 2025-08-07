@@ -36,17 +36,22 @@ enum PurchaseStatus {
 
 
 model User {
-  id        String    @id @default(uuid())
-  email     String    @unique
-  password  String
-  wallet    Wallet?
-  purchases Purchase[]
-  characters Character[]
-  inventories InventoryItem[] 
-  isUserActive Boolean @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id              String           @id @default(uuid())
+  email           String           @unique
+  password        String
+  displayName     String?          
+  discordLink     String?          
+  twitterLink     String?          
+  proUser         Boolean          @default(false)
+  wallet          Wallet?
+  purchases       Purchase[]
+  characters      Character[]
+  inventories     InventoryItem[] 
+  isUserActive    Boolean          @default(true)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
 }
+
 
 
 model Wallet {

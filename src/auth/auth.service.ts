@@ -2,6 +2,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { UpdateProfileDto } from './dto/update-profile.dto';
 
 @Injectable()
 export class AuthService {
@@ -51,4 +52,25 @@ export class AuthService {
       }),
     };
   }
+
+  async updateProfile(userId: string, dto: UpdateProfileDto) {
+  return this.prisma.user.update({
+    where: { id: userId },
+    data: {
+      displayName: dto.displayName,
+      discordLink: dto.discordLink,
+      twitterLink: dto.twitterLink
+    },
+  });
+}
+
+async deleteAccount(userId: string) {
+  return this.prisma.user.update({
+    where: { id: userId },
+    data: {
+      isUserActive: false,
+    },
+  });
+}
+
 }
