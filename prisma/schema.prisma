@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ItemType {
+  SKIN
+  VOUCHER
+  UTILITY
+  MERCH
+}
+
+enum DeliveryType {
+  IN_GAME
+  EMAIL
+  SHOPIFY
+  FUNCTIONAL
+}
+
+enum PurchaseStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+
+model User {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  password  String
+  wallet    Wallet?
+  purchases Purchase[]
+  characters Character[]
+  inventories InventoryItem[] 
+  isUserActive Boolean @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+
+model Wallet {
+  id             String   @id @default(uuid())
+  gems           Int      @default(0)
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId         String   @unique
+  isWalletActive Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+
+model StoreItem {
+  id           String        @id @default(uuid())
+  name         String
+  description  String
+  type         ItemType
+  price        Int
+  deliveryType DeliveryType
+  isConsumable Boolean       @default(false)
+  purchases    Purchase[]
+  inventories  InventoryItem[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+
+model Purchase {
+  id        String         @id @default(uuid())
+  user      User           @relation(fields: [userId], references: [id])
+  userId    String
+  item      StoreItem      @relation(fields: [itemId], references: [id])
+  itemId    String
+  status    PurchaseStatus @default(PENDING)
+  createdAt DateTime       @default(now())
+}
+
+model InventoryItem {
+  id              String   @id @default(uuid())
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          String
+  item            StoreItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  itemId          String
+  isInventoryActive Boolean @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@unique([userId, itemId])
+}
+
+
+model Character {
+  id       String   @id @default(uuid())
+  name     String
+  user     User     @relation(fields: [userId], references: [id])
+  userId   String
+  equipped String[] 
+}
