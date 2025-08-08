@@ -3,6 +3,8 @@ import * as bcrypt from 'bcrypt';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UpdateProfileDto } from './dto/update-profile.dto';
+import { USER_STATUS } from 'src/utils/enum';
+
 
 @Injectable()
 export class AuthService {
@@ -54,23 +56,57 @@ export class AuthService {
   }
 
   async updateProfile(userId: string, dto: UpdateProfileDto) {
-  return this.prisma.user.update({
-    where: { id: userId },
-    data: {
-      displayName: dto.displayName,
-      discordLink: dto.discordLink,
-      twitterLink: dto.twitterLink
-    },
-  });
-}
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        displayName: dto.displayName,
+        discordLink: dto.discordLink,
+        twitterLink: dto.twitterLink,
+      },
+    });
+  }
 
-async deleteAccount(userId: string) {
-  return this.prisma.user.update({
-    where: { id: userId },
-    data: {
-      isUserActive: false,
-    },
-  });
-}
+  async accountStatus (userId: string, status : USER_STATUS) {
+    return this.prisma.user.update({
+      where: { id: userId },
+      data: {
+        status : status,
+      },
+    });
+  }
 
+  getUserProfile(userId: string) {
+    return this.prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        id: true,
+        email: true,
+        displayName: true,
+        discordLink: true,
+        twitterLink: true,
+        status: true,
+      },
+    });
+  }
+
+
+  getAllUsers() {
+    return this.prisma.user.findMany({
+      select: {
+        id: true,
+        email: true,
+        displayName: true,
+        discordLink: true,
+        twitterLink: true,
+        status: true,
+      },
+    });
+  }
+
+
+  async deleteAccount(userId: string) {
+    return this.prisma.user.delete({
+      where: { id: userId },
+    });
+  }
 }

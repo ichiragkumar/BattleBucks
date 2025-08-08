@@ -34,6 +34,18 @@ enum PurchaseStatus {
   FAILED
 }
 
+enum Role {
+  ADMIN
+  USER
+}
+
+enum USER_STATUS {
+  ACTIVE
+  INACTIVE
+  DELETED
+  BANNED
+}
+
 
 model User {
   id              String           @id @default(uuid())
@@ -44,10 +56,11 @@ model User {
   twitterLink     String?          
   proUser         Boolean          @default(false)
   wallet          Wallet?
+  role            Role             @default(USER)
   purchases       Purchase[]
   characters      Character[]
   inventories     InventoryItem[] 
-  isUserActive    Boolean          @default(true)
+  status          USER_STATUS      @default(ACTIVE)
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
 }
